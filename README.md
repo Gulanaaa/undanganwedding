@@ -97,6 +97,12 @@ Edit **`js/config.js`** only. Every value has a comment. Commit → live in ~1 m
 - `assets/img/couple-both.webp` → cover (both of you), `couple-groom.webp` / `couple-bride.webp` → individual ovals (use 3:4 portrait images).
 - `assets/img/fl-*.webp` are the transparent flower cut-outs. Their position and size are inline `style="..."` on the `<img class="fl">` tags in `index.html` (`width`, `top/bottom`, `left/right`, `--r` = rotation, `--fx:-1` = mirror).
 
+### Add / change bank or e-wallet accounts
+In `js/config.js` → `gift.accounts`. One `{ bank, number, holder }` per card; the copy button strips dashes automatically.
+
+### Song title shown while music plays
+`music.title` in `js/config.js`. Leave it empty (`""`) to hide the caption.
+
 ### Replace photos or music
 Keep the same file names inside `assets/`, or update the paths in `index.html` / `config.js`.
 Photos: WebP, max ~1000 px wide, under ~250 KB each. Music: MP3, under ~1 MB.

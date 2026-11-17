@@ -103,9 +103,12 @@
   /* ---------- 7. Musik ---------- */
   var audio = null, wantMusic = false;
   var musicBtn = $('#musicBtn');
+  var np = $('#nowPlaying');
+  if (C.music.title) $('#npText').textContent = C.music.title;
   function setMusicUI(on) {
     musicBtn.classList.toggle('is-playing', on);
     musicBtn.setAttribute('aria-pressed', String(on));
+    np.hidden = !(on && C.music.title);
   }
   function playMusic() {
     if (!audio) {
@@ -172,21 +175,38 @@
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
   })();
 
-  /* ---------- 11. Salin nomor rekening ---------- */
-  $('#copyBtn').addEventListener('click', function () {
-    var num = C.gift.number;
-    function done() { toast('Nomor rekening disalin'); }
+  /* ---------- 11. Kartu hadiah + salin nomor ---------- */
+  function copyText(text, okMsg) {
+    function done() { toast(okMsg); }
     function fallback() {
       var ta = document.createElement('textarea');
-      ta.value = num; ta.setAttribute('readonly', '');
+      ta.value = text; ta.setAttribute('readonly', '');
       ta.style.cssText = 'position:fixed;top:0;left:0;opacity:0';
       document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, 99);
-      try { document.execCommand('copy') ? done() : toast('Salin manual: ' + num); } catch (e) { toast('Salin manual: ' + num); }
+      try { document.execCommand('copy') ? done() : toast('Salin manual: ' + text); } catch (e) { toast('Salin manual: ' + text); }
       document.body.removeChild(ta);
     }
-    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(num).then(done, fallback);
+    if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(done, fallback);
     else fallback();
-  });
+  }
+  (function () {
+    var box = $('#giftCards');
+    (C.gift.accounts || []).forEach(function (acc) {
+      var card = document.createElement('div'); card.className = 'card';
+      function line(cls, txt) { var p = document.createElement('p'); p.className = cls; p.textContent = txt; card.appendChild(p); }
+      line('card__bank', acc.bank);
+      line('card__num', acc.number);
+      line('card__holder', 'a.n ' + acc.holder);
+      var b = document.createElement('button');
+      b.type = 'button'; b.className = 'btn btn--wine btn--sm';
+      b.textContent = 'Salin nomor ' + acc.bank;
+      b.addEventListener('click', function () {
+        copyText(String(acc.number).replace(/[^0-9]/g, ''), 'Nomor ' + acc.bank + ' disalin');
+      });
+      card.appendChild(b);
+      box.appendChild(card);
+    });
+  })();
 
   /* ==========================================================================
      12. RSVP + UCAPAN (Google Sheets lewat Apps Script)

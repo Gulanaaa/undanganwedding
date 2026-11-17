@@ -62,9 +62,11 @@ window.WEDDING = {
     intro:
       "Doa restu Anda adalah hadiah terindah bagi kami. Namun jika berkenan " +
       "memberi tanda kasih, dapat disalurkan melalui:",
-    bank: "BSI",
-    number: "7173261599",
-    holder: "Muhammad Zufar"
+    // Tambah / hapus / urutkan rekening di sini. Satu {...} = satu kartu.
+    accounts: [
+      { bank: "BSI",  number: "7173261599",     holder: "Muhammad Zufar" },
+      { bank: "DANA", number: "0838-7878-0146", holder: "Siti Mutiah" }
+    ]
   },
 
   /* ---------- RSVP & UCAPAN (Google Sheets) ---------- */
@@ -82,6 +84,7 @@ window.WEDDING = {
   /* ---------- MUSIK ---------- */
   music: {
     src: "assets/audio/backsound.mp3",
+    title: "Stuck - Lany (feat. Ziva Magnolya)",   // keterangan lagu yang tampil saat musik diputar
     volume: 0.6
   }
 };
