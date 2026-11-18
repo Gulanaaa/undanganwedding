@@ -73,7 +73,7 @@ window.WEDDING = {
   rsvp: {
     // Tempel URL "Web app" dari Google Apps Script di sini (lihat README.md, langkah 2).
     // Contoh: "https://script.google.com/macros/s/AKfycb.../exec"
-    scriptUrl: "",
+    scriptUrl: "https://script.google.com/macros/s/AKfycbxp98H2ZureAuB3oioajBfGaigG18X6aUnT3wuHYGG4Tyb2RoD2w1QvyJ0K6wLuYIeB/exec",
 
     maxGuests: 5,          // jumlah tamu maksimal per pengisian
     maxMessage: 500,       // panjang ucapan maksimal (karakter)
