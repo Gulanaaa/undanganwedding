@@ -53,7 +53,7 @@ window.WEDDING = {
 
     // OPSIONAL tapi disarankan: buka Google Maps > cari lokasi > Bagikan > Salin link,
     // lalu tempel di sini agar pin 100% tepat. Kosongkan untuk memakai mapsQuery.
-    mapsUrl: ""
+    mapsUrl: "https://maps.app.goo.gl/F4nnrtea9u6sqM7GA"
   },
 
   /* ---------- HADIAH ---------- */
