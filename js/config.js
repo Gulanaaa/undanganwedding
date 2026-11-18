@@ -84,7 +84,7 @@ window.WEDDING = {
   /* ---------- MUSIK ---------- */
   music: {
     src: "assets/audio/backsound.mp3",
-    title: "Stuck - Lany (feat. Ziva Magnolya)",   // keterangan lagu yang tampil saat musik diputar
+    title: "Arsy Widianto, Tiara Andini - Terindah Di Dunia",   // keterangan lagu yang tampil saat musik diputar
     volume: 0.6
   }
 };
